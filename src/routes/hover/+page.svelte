@@ -26,9 +26,9 @@
 				>
 					<h1 class="text-xl uppercase">Image {i + 1}</h1>
 					<div class="description">
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quidem et ducimus earum
-						neque sapiente, eaque, mollitia laborum error commodi aliquid saepe dolor exercitationem
-						optio aliquam. Aut laboriosam velit eveniet.
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur quidem et ducimus
+						earum neque sapiente, eaque, mollitia laborum error commodi aliquid saepe dolor
+						exercitationem optio aliquam. Aut laboriosam velit eveniet.
 					</div>
 				</div>
 			</div>

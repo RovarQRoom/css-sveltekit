@@ -24,18 +24,13 @@
 		items = carousel.querySelectorAll('.item');
 		itemsCount = items.length;
 
-		autoPlay = setInterval(() => {
-			next();
-		}, 5000);
+		// autoPlay = setInterval(() => {
+		// 	next();
+		// }, 5000);
 	});
 
 	function getClass(index: number) {
 		if (index === currentIndex) return 'active';
-		if (index === currentIndex - 1 || (currentIndex === 0 && index === images.length - 1))
-			return 'other_1';
-		if (index === currentIndex + 1 || (currentIndex === images.length - 1 && index === 0))
-			return 'other_2';
-		return '';
 	}
 
 	function prev() {
@@ -93,39 +88,41 @@
 
 		items[active].classList.add('active');
 		if (other_1 !== null) {
-			items[other_1].classList.add('other_1');
+			items[other_1].classList.add('other_0');
 		}
 		if (other_2 !== null) {
-			items[other_2].classList.add('other_2');
+			items[other_2].classList.add('other_0');
 		}
 
-		clearInterval(autoPlay);
-		autoPlay = setInterval(() => {
-			next();
-		}, 5000);
+		// clearInterval(autoPlay);
+		// autoPlay = setInterval(() => {
+		// 	next();
+		// }, 5000);
 	};
 	let autoPlay: number;
 </script>
 
 <main>
-	<section bind:this={carousel} class="carousel next">
-		<div class="list">
+	<section bind:this={carousel} class="carousel next w-full h-[100vh]">
+		<div class="list w-full h-full">
 			{#each images as image, index}
-				<article class="item {getClass(index)}">
-					<div class="main-content" style="background-color: {image.color};">
-						<div class="content">
+				<article class="item {getClass(index)} h-full w-full">
+					<div class="main-content w-full h-full justify-center items-center" style="background-color: {image.color};">
+						<!-- <div class="content">
 							<h2>{image.name}</h2>
 							<p class="price">$ {image.price}</p>
 							<p class="description">
 								{image.description}
 							</p>
 							<button class="addToCard"> Add To Card </button>
-						</div>
+						</div> -->
+                        <!-- <figure class="image  w-full flex justify-center"> -->
+                        <div class="w-full flex h-full justify-center items-center">
+                            <img src="images/{image.src}" class="w-96 object-cover " alt="" />
+                            <!-- <figcaption>{image.name}</figcaption> -->
+                        </div>
+                        <!-- </figure> -->
 					</div>
-					<figure class="image">
-						<img src="images/{image.src}" alt="" />
-						<figcaption>{image.name}</figcaption>
-					</figure>
 				</article>
 			{/each}
 		</div>
@@ -137,103 +134,6 @@
 </main>
 
 <style>
-	.carousel {
-		margin-top: -80px;
-		width: 100%;
-		height: 100vh;
-		overflow: hidden;
-	}
-	.carousel .list {
-		height: 100%;
-		position: relative;
-	}
-	.carousel .list::before {
-		position: absolute;
-		width: var(--w-image);
-		height: 100%;
-		content: '';
-		top: 0;
-		left: calc(100% - calc(var(--w-image) * var(--calculate)));
-		/* border-left: 1px solid var(--border-color);
-		border-right: 1px solid var(--border-color); */
-		z-index: 10;
-		pointer-events: none;
-	}
-	.carousel .list::after {
-		position: absolute;
-		top: 50px;
-		left: 50px;
-		content: '';
-		background-color: red;
-		width: 400px;
-		height: 300px;
-		z-index: 10;
-		pointer-events: none;
-		border-radius: 20px 50px 110px 230px;
-		filter: blur(150px);
-		opacity: 0.6;
-	}
-	.carousel .list .item {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-	.carousel .list .item .image {
-		width: var(--w-image);
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: calc(100% - calc(var(--w-image) * var(--calculate)));
-		padding: 20px;
-		display: flex;
-		flex-direction: column;
-		justify-content: end;
-		align-items: center;
-		font-weight: 500;
-	}
-	.carousel .list .item .image img {
-		width: 90%;
-		margin-bottom: 20px;
-		filter: drop-shadow(0 150px 50px #9e0c0c55);
-	}
-	.carousel .list .item .image figcaption {
-		font-family: 'Aboreto';
-		font-weight: bold;
-		font-size: 1.3em;
-		text-align: right;
-		margin-bottom: 30px;
-		width: 70%;
-	}
-	.carousel .list .item .main-content {
-		height: 100%;
-		display: grid;
-		grid-template-columns: calc(100% - calc(var(--w-image) * var(--calculate)));
-	}
-	.carousel .list .item .main-content .content {
-		padding: 150px 20px 20px 80px;
-	}
-	.carousel .list .item .main-content .content h2 {
-		font-size: 5em;
-		font-family: 'Aboreto';
-	}
-	.carousel .list .item .main-content .content .price {
-		font-family: 'Aboreto';
-		font-size: 3em;
-		margin: 20px 0;
-	}
-	.carousel .list .item .main-content .content .addToCard {
-		background-color: #4f8b69;
-		color: #fff;
-		padding: 10px 30px;
-		font-family: Poppins;
-		font-size: large;
-		font-weight: 500;
-		border-radius: 30px;
-		border: none;
-		margin-top: 20px;
-	}
 	.arrows {
 		position: absolute;
 		bottom: 20px;
@@ -356,18 +256,6 @@
 		.carousel .list .item .image {
 			width: 100%;
 			left: 0;
-			justify-content: center;
-		}
-		.carousel .list .item .image figcaption {
-			color: #fff;
-			width: 100%;
-			text-align: center;
-		}
-		.carousel .list .item .main-content .content {
-			display: none;
-		}
-		.arrows {
-			left: 50%;
 			justify-content: center;
 		}
 	}
