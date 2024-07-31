@@ -2,6 +2,12 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+:root {
+	--border-color: #fff5;
+	--w-image: 500px;
+	--calculate: calc(3 / 2);
+}
+
 body {
 	background-color: #0c0f20;
 	font-family: 'Poppins', sans-serif;
