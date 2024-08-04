@@ -137,11 +137,11 @@
 	.arrows {
 		position: absolute;
 		bottom: 20px;
-		width: calc(100% - calc(var(--w-image) * var(--calculate)));
+		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(2, 50px);
 		grid-template-rows: 50px;
-		justify-content: end;
+		justify-content: center;
 		gap: 10px;
 	}
 	.arrows button {
